@@ -4,45 +4,53 @@
     <title>Морской бой!</title>
     <link rel="stylesheet" href="/main.css" />
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
     <h1>Играй в "Морской бой"!</h1>
     <form
+      class="setup"
       action="javascript:;"
       onsubmit="getCellsNumber(this)"
       id="idForm"
       name="nameForm"
     >
-      <p>
+      <div class="setup__field">
         <label for="seaCellsNumber"
           >Укажи размерность моря (количество ячеек)</label
         >
-        <input id="seaCellsNumber" type="text" name="seaCellsNumber" />
-      </p>
-      <p>
+        <input
+          class="setup__control"
+          id="seaCellsNumber"
+          type="text"
+          name="seaCellsNumber"
+        />
+      </div>
+      <div class="setup__field">
         <label for="shipCellsNumber"
           >Укажи размерность корабля (количество ячеек)</label
         >
-        <input id="shipCellsNumber" type="text" name="shipCellsNumber" />
-      </p>
-      <p>
-        <input value="СТАРТ!" type="submit" />
-      </p>
+        <input
+          class="setup__control"
+          id="shipCellsNumber"
+          type="text"
+          name="shipCellsNumber"
+        />
+      </div>
+      <button type="submit">СТАРТ!</button>
     </form>
 
     <div class="controls">
-      <form>
-        <button type="submit" class="controls_cell">1</button>
-        <button type="submit" class="controls_cell">2</button>
-        <button type="submit" class="controls_cell">3</button>
-        <button type="submit" class="controls_cell">4</button>
-        <button type="submit" class="controls_cell">5</button>
-        <button type="submit" class="controls_cell">6</button>
-        <button type="submit" class="controls_cell">7</button>
-        <button type="submit" class="controls_cell">8</button>
-        <button type="submit" class="controls_cell">9</button>
-        <button type="submit" class="controls_cell">10</button>
-      </form>
+      <button type="button" class="controls_cell">1</button>
+      <button type="button" class="controls_cell">2</button>
+      <button type="button" class="controls_cell">3</button>
+      <button type="button" class="controls_cell">4</button>
+      <button type="button" class="controls_cell">5</button>
+      <button type="button" class="controls_cell">6</button>
+      <button type="button" class="controls_cell">7</button>
+      <button type="button" class="controls_cell">8</button>
+      <button type="button" class="controls_cell">9</button>
+      <button type="button" class="controls_cell">10</button>
     </div>
   </body>
 </html>

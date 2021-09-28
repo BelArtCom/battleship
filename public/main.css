@@ -2,3 +2,13 @@
   display: flex;
   justify-content: center;
 }
+
+.setup__field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.setup__control {
+  margin: 0.5em 0;
+}
