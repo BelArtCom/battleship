@@ -1,11 +1,23 @@
-import { getRandomInt } from "./utils.js";
-
-document.getElementById("startButton").addEventListener("click", myFunction);
+import { getRandomInt, isPositiveInt } from "./utils.js";
 
 function getCellsNumber(theForm) {
-  console.log(
-    `Введены значения: ${theForm.seaCellsNumber.value}, ${theForm.shipCellsNumber.value}.`
-  );
+  const seaCells = theForm.seaCellsNumber.value;
+  const shipCells = theForm.shipCellsNumber.value;
+
+  if (!isPositiveInt(seaCells) || seaCells < 2) {
+    alert(
+      "Введи верное значение размерности моря (только целое число больше 1)"
+    );
+  } else if (!isPositiveInt(shipCells) || shipCells < 1) {
+    alert(
+      "Введи верное значение размерности корабля (только целое число больше 0)"
+    );
+  } else if (Number.parseInt(seaCells) <= Number.parseInt(shipCells)) {
+    alert("Размерность корабля должна быть меньше размерности моря");
+  } else {
+    console.log(`Размерность моря: ${Number(seaCells)}.`);
+    console.log(`Размерность корабля: ${Number(shipCells)}.`);
+  }
 }
 
 window.getCellsNumber = getCellsNumber;
