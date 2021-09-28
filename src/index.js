@@ -1,22 +1,32 @@
 import { getRandomInt, isPositiveInt } from "./utils.js";
 
+const MIN_SEA_SHIP_DIFF = 1;
+
 function getCellsNumber(theForm) {
   const seaCells = theForm.seaCellsNumber.value;
   const shipCells = theForm.shipCellsNumber.value;
 
-  if (!isPositiveInt(seaCells) || seaCells < 2) {
+  if (!isPositiveInt(seaCells, 2)) {
     alert(
       "Введи верное значение размерности моря (только целое число больше 1)"
     );
-  } else if (!isPositiveInt(shipCells) || shipCells < 1) {
+    return;
+  }
+  if (!isPositiveInt(shipCells, 1)) {
     alert(
       "Введи верное значение размерности корабля (только целое число больше 0)"
     );
-  } else if (Number.parseInt(seaCells) <= Number.parseInt(shipCells)) {
+    return;
+  }
+
+  const seaCellsNumber = Number(seaCells);
+  const shipCellsNumber = Number(shipCells);
+
+  if (seaCellsNumber - shipCellsNumber < MIN_SEA_SHIP_DIFF) {
     alert("Размерность корабля должна быть меньше размерности моря");
   } else {
-    console.log(`Размерность моря: ${Number(seaCells)}.`);
-    console.log(`Размерность корабля: ${Number(shipCells)}.`);
+    console.log(`Размерность моря: ${seaCellsNumber}.`);
+    console.log(`Размерность корабля: ${shipCellsNumber}.`);
   }
 }
 
