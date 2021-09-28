@@ -3,6 +3,5 @@ export function getRandomInt(max) {
   return Math.floor(rand);
 }
 
-export const isPositiveInt = (str, min = 0) =>
-  [...str].every((char) => char >= "0" && char <= "9") && Number(str) > min;
-  
+export const isPositiveInt = (str, min = 1) =>
+  [...str].every((char) => char >= "0" && char <= "9") && Number(str) >= min;

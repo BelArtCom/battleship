@@ -12,45 +12,23 @@
       class="setup"
       action="javascript:;"
       onsubmit="getCellsNumber(this)"
-      id="idForm"
-      name="nameForm"
+      id="setup"
     >
       <div class="setup__field">
         <label for="seaCellsNumber"
           >Укажи размерность моря (количество ячеек)</label
         >
-        <input
-          class="setup__control"
-          id="seaCellsNumber"
-          type="text"
-          name="seaCellsNumber"
-        />
+        <input class="setup__control" type="text" name="seaCellsNumber" />
       </div>
       <div class="setup__field">
         <label for="shipCellsNumber"
           >Укажи размерность корабля (количество ячеек)</label
         >
-        <input
-          class="setup__control"
-          id="shipCellsNumber"
-          type="text"
-          name="shipCellsNumber"
-        />
+        <input class="setup__control" type="text" name="shipCellsNumber" />
       </div>
       <button type="submit">СТАРТ!</button>
     </form>
 
-    <div class="controls">
-      <button type="button" class="controls_cell">1</button>
-      <button type="button" class="controls_cell">2</button>
-      <button type="button" class="controls_cell">3</button>
-      <button type="button" class="controls_cell">4</button>
-      <button type="button" class="controls_cell">5</button>
-      <button type="button" class="controls_cell">6</button>
-      <button type="button" class="controls_cell">7</button>
-      <button type="button" class="controls_cell">8</button>
-      <button type="button" class="controls_cell">9</button>
-      <button type="button" class="controls_cell">10</button>
-    </div>
+    <div class="controls" id="controls"></div>
   </body>
 </html>

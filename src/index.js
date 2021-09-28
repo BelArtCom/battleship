@@ -32,6 +32,8 @@ function getCellsNumber(theForm) {
 window.getCellsNumber = getCellsNumber;
 
 function playTheGame(seaCellsNumber, shipCellsNumber) {
+  document.getElementById("setup").hidden = true;
+
   const start = getRandomInt(seaCellsNumber - shipCellsNumber);
   console.log("start = " + start);
   const locationList = Array.from(
@@ -43,13 +45,14 @@ function playTheGame(seaCellsNumber, shipCellsNumber) {
   let guesses = 0;
   let isSunk = false;
 
-  while (!isSunk) {
-    const guess = Number(
-      prompt(`Готовься, целься, стреляй! (введите число 1-${seaCellsNumber}):`)
-    );
-    if (Number.isNaN(guess) || guess < 1 || guess > seaCellsNumber) {
-      alert("Пожалуйста, введите корректный номер ячейки!");
-    } else {
+  for (let i = 0; i < seaCellsNumber; ++i) {
+    const button = document.createElement("button");
+    button.textContent = `${i + 1}`;
+    button.classList.add("controls_cell");
+    button.type = "button";
+    button.dataset.index = i + 1;
+    button.addEventListener("click", () => {
+      const guess = i + 1;
       guesses++;
       if (locationList.includes(guess)) {
         if (!guessList.includes(guess)) {
@@ -68,6 +71,9 @@ function playTheGame(seaCellsNumber, shipCellsNumber) {
       } else {
         alert("ПРОМАХ");
       }
-    }
+    });
+
+    const controls = document.getElementById("controls");
+    controls.appendChild(button);
   }
 }
