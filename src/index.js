@@ -1,14 +1,19 @@
+import { getRandomInt } from "./utils.js";
+
 document.getElementById("startButton").addEventListener("click", myFunction);
 
-function calculateWorkingRange(max) {
-  let rand = Math.random() * (max + 1) + 1;
-  return Math.floor(rand);
+function getCellsNumber(theForm) {
+  console.log(
+    `Введены значения: ${theForm.seaCellsNumber.value}, ${theForm.shipCellsNumber.value}.`
+  );
 }
+
+window.getCellsNumber = getCellsNumber;
 
 function myFunction() {
   const SEA_CELLS_NUMBER = 10;
   const SHIP_CELLS_NUMBER = 5;
-  const start = calculateWorkingRange(SEA_CELLS_NUMBER - SHIP_CELLS_NUMBER);
+  const start = getRandomInt(SEA_CELLS_NUMBER - SHIP_CELLS_NUMBER);
   console.log("start = " + start);
   const locationList = Array.from(
     { length: SHIP_CELLS_NUMBER },
