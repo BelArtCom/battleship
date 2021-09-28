@@ -25,20 +25,17 @@ function getCellsNumber(theForm) {
   if (seaCellsNumber - shipCellsNumber < MIN_SEA_SHIP_DIFF) {
     alert("Размерность корабля должна быть меньше размерности моря");
   } else {
-    console.log(`Размерность моря: ${seaCellsNumber}.`);
-    console.log(`Размерность корабля: ${shipCellsNumber}.`);
+    playTheGame(seaCellsNumber, shipCellsNumber);
   }
 }
 
 window.getCellsNumber = getCellsNumber;
 
-function myFunction() {
-  const SEA_CELLS_NUMBER = 10;
-  const SHIP_CELLS_NUMBER = 5;
-  const start = getRandomInt(SEA_CELLS_NUMBER - SHIP_CELLS_NUMBER);
+function playTheGame(seaCellsNumber, shipCellsNumber) {
+  const start = getRandomInt(seaCellsNumber - shipCellsNumber);
   console.log("start = " + start);
   const locationList = Array.from(
-    { length: SHIP_CELLS_NUMBER },
+    { length: shipCellsNumber },
     (_, i) => i + start
   );
   let guessList = [];
@@ -48,26 +45,24 @@ function myFunction() {
 
   while (!isSunk) {
     const guess = Number(
-      prompt(
-        `Готовься, целься, стреляй! (введите число 1-${SEA_CELLS_NUMBER}):`
-      )
+      prompt(`Готовься, целься, стреляй! (введите число 1-${seaCellsNumber}):`)
     );
-    if (Number.isNaN(guess) || guess < 1 || guess > SEA_CELLS_NUMBER) {
+    if (Number.isNaN(guess) || guess < 1 || guess > seaCellsNumber) {
       alert("Пожалуйста, введите корректный номер ячейки!");
     } else {
       guesses++;
       if (locationList.includes(guess)) {
         if (!guessList.includes(guess)) {
           hits++;
+          guessList.push(guess);
         }
-        guessList.push(guess);
         alert("ПОПАДАНИЕ!");
-        if (hits == SHIP_CELLS_NUMBER) {
+        if (hits == shipCellsNumber) {
           isSunk = true;
           alert("Корабль потоплен!");
-          const accuracy = Math.round((SHIP_CELLS_NUMBER / guesses) * 100);
+          const accuracy = Math.round((shipCellsNumber / guesses) * 100);
           alert(
-            `Совершено выстрелов: ${guesses}. Точность стрельбы: ${accuracy} %`
+            `Совершено выстрелов: ${guesses}. Точность стрельбы: ${accuracy}%`
           );
         }
       } else {
